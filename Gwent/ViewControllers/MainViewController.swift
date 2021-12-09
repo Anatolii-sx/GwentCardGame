@@ -7,13 +7,16 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class MainViewController: UIViewController {
+    
+    let cards = Card.getCardsForPlayer()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        cards.forEach{
+            print($0.type.attack)
+        }
     }
-
-
 }
 

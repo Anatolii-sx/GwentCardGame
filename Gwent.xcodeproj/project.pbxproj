@@ -9,21 +9,23 @@
 /* Begin PBXBuildFile section */
 		9CF931DD27627BED00AF4D25 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF931DC27627BED00AF4D25 /* AppDelegate.swift */; };
 		9CF931DF27627BED00AF4D25 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF931DE27627BED00AF4D25 /* SceneDelegate.swift */; };
-		9CF931E127627BED00AF4D25 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF931E027627BED00AF4D25 /* ViewController.swift */; };
+		9CF931E127627BED00AF4D25 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF931E027627BED00AF4D25 /* MainViewController.swift */; };
 		9CF931E427627BED00AF4D25 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CF931E227627BED00AF4D25 /* Main.storyboard */; };
 		9CF931E627627BEF00AF4D25 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9CF931E527627BEF00AF4D25 /* Assets.xcassets */; };
 		9CF931E927627BEF00AF4D25 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CF931E727627BEF00AF4D25 /* LaunchScreen.storyboard */; };
+		9CF931F127627BF800AF4D25 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF931F027627BF800AF4D25 /* Card.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		9CF931D927627BED00AF4D25 /* Gwent.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gwent.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CF931DC27627BED00AF4D25 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9CF931DE27627BED00AF4D25 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		9CF931E027627BED00AF4D25 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		9CF931E027627BED00AF4D25 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		9CF931E327627BED00AF4D25 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9CF931E527627BEF00AF4D25 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9CF931E827627BEF00AF4D25 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9CF931EA27627BEF00AF4D25 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9CF931F027627BF800AF4D25 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +58,56 @@
 		9CF931DB27627BED00AF4D25 /* Gwent */ = {
 			isa = PBXGroup;
 			children = (
-				9CF931DC27627BED00AF4D25 /* AppDelegate.swift */,
-				9CF931DE27627BED00AF4D25 /* SceneDelegate.swift */,
-				9CF931E027627BED00AF4D25 /* ViewController.swift */,
-				9CF931E227627BED00AF4D25 /* Main.storyboard */,
-				9CF931E527627BEF00AF4D25 /* Assets.xcassets */,
-				9CF931E727627BEF00AF4D25 /* LaunchScreen.storyboard */,
-				9CF931EA27627BEF00AF4D25 /* Info.plist */,
+				9CF931F427627C6D00AF4D25 /* ViewControllers */,
+				9CF931F327627C4700AF4D25 /* Storyboards */,
+				9CF931F227627C3900AF4D25 /* Model */,
+				9CF931F627627C9D00AF4D25 /* Resourses */,
+				9CF931F527627C8B00AF4D25 /* App */,
 			);
 			path = Gwent;
+			sourceTree = "<group>";
+		};
+		9CF931F227627C3900AF4D25 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9CF931F027627BF800AF4D25 /* Card.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		9CF931F327627C4700AF4D25 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				9CF931E227627BED00AF4D25 /* Main.storyboard */,
+				9CF931E727627BEF00AF4D25 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		9CF931F427627C6D00AF4D25 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				9CF931E027627BED00AF4D25 /* MainViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		9CF931F527627C8B00AF4D25 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				9CF931DE27627BED00AF4D25 /* SceneDelegate.swift */,
+				9CF931DC27627BED00AF4D25 /* AppDelegate.swift */,
+				9CF931EA27627BEF00AF4D25 /* Info.plist */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		9CF931F627627C9D00AF4D25 /* Resourses */ = {
+			isa = PBXGroup;
+			children = (
+				9CF931E527627BEF00AF4D25 /* Assets.xcassets */,
+			);
+			path = Resourses;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,9 +181,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9CF931E127627BED00AF4D25 /* ViewController.swift in Sources */,
+				9CF931E127627BED00AF4D25 /* MainViewController.swift in Sources */,
 				9CF931DD27627BED00AF4D25 /* AppDelegate.swift in Sources */,
 				9CF931DF27627BED00AF4D25 /* SceneDelegate.swift in Sources */,
+				9CF931F127627BF800AF4D25 /* Card.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -291,12 +335,14 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = JCDM2HMWLU;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Gwent/Info.plist;
+				INFOPLIST_FILE = Gwent/App/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -306,7 +352,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -319,12 +365,14 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = JCDM2HMWLU;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Gwent/Info.plist;
+				INFOPLIST_FILE = Gwent/App/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -334,7 +382,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

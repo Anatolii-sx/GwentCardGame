@@ -14,7 +14,7 @@ struct Warrior {
 }
 
 extension Card {
-    static func getCardsForPlayer() -> [Card] {
+    static func getCardsForGame() -> [Card] {
         let groupOne = getCards(count: 2, with: 6)
         let groupTwo = getCards(count: 3, with: 4)
         let groupThree = getCards(count: 5, with: 2)

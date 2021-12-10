@@ -6,7 +6,7 @@
 //
 
 struct Card {
-    let type: Warrior
+    let typeWarrior: Warrior
 }
 
 struct Warrior {
@@ -28,7 +28,7 @@ extension Card {
         var cards: [Card] = []
         for _ in 1...count {
             cards.append(
-                Card(type: Warrior(attack: warriorAttack))
+                Card(typeWarrior: Warrior(attack: warriorAttack))
             )
         }
         return cards

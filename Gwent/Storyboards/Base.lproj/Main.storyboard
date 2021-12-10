@@ -51,10 +51,10 @@
             </objects>
             <point key="canvasLocation" x="-737" y="81"/>
         </scene>
-        <!--Main View Controller-->
+        <!--Game View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController modalTransitionStyle="flipHorizontal" modalPresentationStyle="fullScreen" id="BYZ-38-t0r" customClass="MainViewController" customModule="Gwent" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalTransitionStyle="flipHorizontal" modalPresentationStyle="fullScreen" id="BYZ-38-t0r" customClass="GameViewController" customModule="Gwent" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -89,7 +89,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="aW6-xj-0q4">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="playerCell" id="aW6-xj-0q4" customClass="PlayerCardCell" customModule="Gwent" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="40" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="EHe-zz-vrV">
@@ -122,6 +122,10 @@
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="40" height="50"/>
+                                        <connections>
+                                            <outlet property="playerCardAttackLabel" destination="N1z-bY-8yY" id="fVi-kh-8k8"/>
+                                            <outlet property="playerCardPictureLabel" destination="1g1-5J-VmL" id="4re-uq-HL4"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -136,6 +140,9 @@
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Pass"/>
+                                <connections>
+                                    <action selector="passedButtonTapped" destination="BYZ-38-t0r" eventType="touchUpInside" id="zFX-zT-jJg"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Round: 1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I5J-nS-gQi">
                                 <rect key="frame" x="16" y="20" width="288" height="24"/>
@@ -143,11 +150,21 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="3Fi-Wu-Cbl">
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3Fi-Wu-Cbl">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="4"/>
                             </progressView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pass" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pKE-7p-TVn">
+                                <rect key="frame" x="60" y="60" width="200" height="41"/>
+                                <color key="backgroundColor" red="0.28235294117647058" green="0.58823529411764708" blue="0.70980392156862748" alpha="0.61610099337748347" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="41" id="agX-vZ-WW8"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="kC7-6u-IMx">
-                                <rect key="frame" x="16" y="84" width="288" height="110"/>
+                                <rect key="frame" x="16" y="133" width="288" height="110"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="110" id="vdG-IN-ptx"/>
@@ -159,14 +176,14 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="7JN-x7-Dor">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="computerCell" id="7JN-x7-Dor" customClass="ComputerCardCell" customModule="Gwent" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="40" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="mAu-Hi-r74">
                                             <rect key="frame" x="0.0" y="0.0" width="40" height="50"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🧟‍♂️" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PS2-CT-vUt">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🧟‍♂️" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PS2-CT-vUt" customClass="Computer">
                                                     <rect key="frame" x="0.0" y="0.0" width="40" height="50"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="36"/>
                                                     <nil key="textColor"/>
@@ -192,6 +209,10 @@
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="40" height="50"/>
+                                        <connections>
+                                            <outlet property="computerCardAttackLabel" destination="p8I-7R-SDZ" id="cED-dU-m3P"/>
+                                            <outlet property="computerCardPictureLabel" destination="PS2-CT-vUt" id="t1u-2j-xXt"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -203,23 +224,34 @@
                             <constraint firstItem="6NZ-7j-Qlf" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="2EU-Px-C30"/>
                             <constraint firstItem="I5J-nS-gQi" firstAttribute="trailing" secondItem="kC7-6u-IMx" secondAttribute="trailing" id="50e-RS-0kT"/>
                             <constraint firstItem="v6I-fe-4E8" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="7Qh-u9-nJP"/>
+                            <constraint firstItem="pKE-7p-TVn" firstAttribute="top" secondItem="I5J-nS-gQi" secondAttribute="bottom" constant="16" id="DQ0-l5-6gc"/>
                             <constraint firstItem="I5J-nS-gQi" firstAttribute="leading" secondItem="kC7-6u-IMx" secondAttribute="leading" id="KXD-bp-skg"/>
                             <constraint firstItem="3Fi-Wu-Cbl" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Kkr-Gz-n1I"/>
                             <constraint firstItem="IGE-AD-BhV" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="PKr-Hf-Uqz"/>
                             <constraint firstItem="3Fi-Wu-Cbl" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="R3U-He-Jo7"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="IGE-AD-BhV" secondAttribute="trailing" constant="16" id="S2V-TV-Wll"/>
                             <constraint firstItem="6NZ-7j-Qlf" firstAttribute="top" secondItem="IGE-AD-BhV" secondAttribute="bottom" constant="30" id="SNP-2o-oyg"/>
+                            <constraint firstItem="pKE-7p-TVn" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="TxR-LJ-oM5"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="6NZ-7j-Qlf" secondAttribute="bottom" constant="32" id="hfH-wc-dWj"/>
+                            <constraint firstItem="kC7-6u-IMx" firstAttribute="top" secondItem="pKE-7p-TVn" secondAttribute="bottom" constant="32" id="j2m-dn-BUa"/>
+                            <constraint firstItem="pKE-7p-TVn" firstAttribute="width" secondItem="6NZ-7j-Qlf" secondAttribute="width" id="kX4-KR-Jfx"/>
                             <constraint firstItem="I5J-nS-gQi" firstAttribute="top" secondItem="3Fi-Wu-Cbl" secondAttribute="bottom" constant="16" id="l2w-ZP-nU3"/>
                             <constraint firstItem="kC7-6u-IMx" firstAttribute="leading" secondItem="v6I-fe-4E8" secondAttribute="leading" id="osc-Ct-PZY"/>
                             <constraint firstItem="v6I-fe-4E8" firstAttribute="leading" secondItem="IGE-AD-BhV" secondAttribute="leading" id="pib-k6-06l"/>
-                            <constraint firstItem="kC7-6u-IMx" firstAttribute="top" secondItem="I5J-nS-gQi" secondAttribute="bottom" constant="40" id="t9v-O4-gbZ"/>
                             <constraint firstItem="kC7-6u-IMx" firstAttribute="trailing" secondItem="v6I-fe-4E8" secondAttribute="trailing" id="vRt-aI-8nY"/>
                             <constraint firstItem="3Fi-Wu-Cbl" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="wrc-zp-lbA"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Ku6-39-vXd"/>
                     <connections>
+                        <outlet property="computerChosenCardsLabel" destination="wxK-DV-HFf" id="Kb5-zf-r2B"/>
+                        <outlet property="computerCollectionView" destination="kC7-6u-IMx" id="nuC-HN-Kk8"/>
+                        <outlet property="computerPassLabel" destination="pKE-7p-TVn" id="Pz8-2R-onA"/>
+                        <outlet property="playerChosenCardsLabel" destination="aFw-kd-3nD" id="W9c-hw-L5z"/>
+                        <outlet property="playerCollectionView" destination="IGE-AD-BhV" id="gDF-ts-MQz"/>
+                        <outlet property="playerPassButton" destination="6NZ-7j-Qlf" id="XZS-yH-Rxh"/>
+                        <outlet property="progressView" destination="3Fi-Wu-Cbl" id="SY5-B1-Khw"/>
+                        <outlet property="roundLabel" destination="I5J-nS-gQi" id="Wme-6D-3fl"/>
                         <segue destination="3YE-Cc-HOQ" kind="show" id="xPa-bl-UEg"/>
                     </connections>
                 </viewController>
@@ -238,7 +270,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="130" translatesAutoresizingMaskIntoConstraints="NO" id="g1B-Ih-jaY">
                                 <rect key="frame" x="60" y="90" width="200" height="228.5"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Player won! Score: 2/0" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c8G-Da-D6G">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You won! 😎 Score: 2/0" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c8G-Da-D6G">
                                         <rect key="frame" x="0.0" y="0.0" width="200" height="57.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                         <nil key="textColor"/>

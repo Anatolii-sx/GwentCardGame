@@ -23,11 +23,11 @@ class ResultViewController: UIViewController {
         var winner = ""
         
         if winsPlayer > winsComputer {
-            winner = "🦹🏼‍♂️ Player"
+            winner = "Player 🦹🏼‍♂️"
         } else if winsPlayer < winsComputer {
-            winner = "👾 Computer"
+            winner = "Computer 👾"
         } else {
-            winner = "🤝 No one"
+            winner = "No one 🤝"
         }
         
         return winner

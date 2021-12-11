@@ -243,7 +243,7 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
         
         isComputerPassButtonTapped = false
         computerPassLabel.backgroundColor = #colorLiteral(red: 0.2823529412, green: 0.5882352941, blue: 0.7098039216, alpha: 0.6161009934)
-        computerPassLabel.tintColor = .black
+        computerPassLabel.textColor = .black
     }
     
     private func getResult() {

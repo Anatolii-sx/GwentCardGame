@@ -31,7 +31,7 @@
                                 <state key="normal" title="Start Game"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <integer key="value" value="5"/>
+                                        <integer key="value" value="7"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
@@ -141,7 +141,7 @@
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Pass"/>
                                 <connections>
-                                    <action selector="passedButtonTapped" destination="BYZ-38-t0r" eventType="touchUpInside" id="zFX-zT-jJg"/>
+                                    <action selector="playerPassButtonTapped" destination="BYZ-38-t0r" eventType="touchUpInside" id="zFX-zT-jJg"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Round: 1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I5J-nS-gQi">
@@ -252,32 +252,32 @@
                         <outlet property="playerPassButton" destination="6NZ-7j-Qlf" id="XZS-yH-Rxh"/>
                         <outlet property="progressView" destination="3Fi-Wu-Cbl" id="SY5-B1-Khw"/>
                         <outlet property="roundLabel" destination="I5J-nS-gQi" id="Wme-6D-3fl"/>
-                        <segue destination="3YE-Cc-HOQ" kind="show" id="xPa-bl-UEg"/>
+                        <segue destination="3YE-Cc-HOQ" kind="show" identifier="resultSegue" id="xPa-bl-UEg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="18.75" y="81.338028169014081"/>
         </scene>
-        <!--View Controller-->
+        <!--Result View Controller-->
         <scene sceneID="bRy-hd-0TK">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="3YE-Cc-HOQ" sceneMemberID="viewController">
+                <viewController modalTransitionStyle="crossDissolve" modalPresentationStyle="fullScreen" id="3YE-Cc-HOQ" customClass="ResultViewController" customModule="Gwent" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Vi7-5x-tVv">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="130" translatesAutoresizingMaskIntoConstraints="NO" id="g1B-Ih-jaY">
-                                <rect key="frame" x="60" y="90" width="200" height="228.5"/>
+                                <rect key="frame" x="60" y="85" width="200" height="238"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You won! 😎 Score: 2/0" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c8G-Da-D6G">
-                                        <rect key="frame" x="0.0" y="0.0" width="200" height="57.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="200" height="67"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SUs-hD-Al9">
-                                        <rect key="frame" x="0.0" y="187.5" width="200" height="41"/>
+                                        <rect key="frame" x="0.0" y="197" width="200" height="41"/>
                                         <color key="backgroundColor" red="0.28235294119999998" green="0.58823529409999997" blue="0.70980392160000005" alpha="0.61610099340000002" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -285,9 +285,12 @@
                                         <state key="normal" title="Play again"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <integer key="value" value="5"/>
+                                                <integer key="value" value="7"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <segue destination="kwN-Bb-Vfu" kind="unwind" unwindAction="unwindFor:" id="qzd-4v-5eF"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -303,8 +306,12 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Viw-kQ-qcK"/>
+                    <connections>
+                        <outlet property="resultLabel" destination="c8G-Da-D6G" id="AWz-19-hty"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nKR-iw-Bu1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="kwN-Bb-Vfu" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="757.5" y="80.281690140845072"/>
         </scene>

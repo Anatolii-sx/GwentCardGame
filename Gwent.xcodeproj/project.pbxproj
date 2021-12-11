@@ -16,6 +16,7 @@
 		9CF931F127627BF800AF4D25 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF931F027627BF800AF4D25 /* Card.swift */; };
 		9CF931F82763CE2500AF4D25 /* PlayerCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF931F72763CE2500AF4D25 /* PlayerCardCell.swift */; };
 		9CF931FA2763D7BD00AF4D25 /* ComputerCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF931F92763D7BD00AF4D25 /* ComputerCardCell.swift */; };
+		9CF931FD2765538800AF4D25 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF931FC2765538800AF4D25 /* ResultViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		9CF931F027627BF800AF4D25 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		9CF931F72763CE2500AF4D25 /* PlayerCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCardCell.swift; sourceTree = "<group>"; };
 		9CF931F92763D7BD00AF4D25 /* ComputerCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComputerCardCell.swift; sourceTree = "<group>"; };
+		9CF931FC2765538800AF4D25 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 		9CF931DB27627BED00AF4D25 /* Gwent */ = {
 			isa = PBXGroup;
 			children = (
+				9CF931FB27649A2300AF4D25 /* Views */,
 				9CF931F427627C6D00AF4D25 /* ViewControllers */,
 				9CF931F327627C4700AF4D25 /* Storyboards */,
 				9CF931F227627C3900AF4D25 /* Models */,
@@ -92,8 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				9CF931E027627BED00AF4D25 /* GameViewController.swift */,
-				9CF931F72763CE2500AF4D25 /* PlayerCardCell.swift */,
-				9CF931F92763D7BD00AF4D25 /* ComputerCardCell.swift */,
+				9CF931FC2765538800AF4D25 /* ResultViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -114,6 +116,15 @@
 				9CF931E527627BEF00AF4D25 /* Assets.xcassets */,
 			);
 			path = Resourses;
+			sourceTree = "<group>";
+		};
+		9CF931FB27649A2300AF4D25 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				9CF931F72763CE2500AF4D25 /* PlayerCardCell.swift */,
+				9CF931F92763D7BD00AF4D25 /* ComputerCardCell.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -189,6 +200,7 @@
 			files = (
 				9CF931F82763CE2500AF4D25 /* PlayerCardCell.swift in Sources */,
 				9CF931E127627BED00AF4D25 /* GameViewController.swift in Sources */,
+				9CF931FD2765538800AF4D25 /* ResultViewController.swift in Sources */,
 				9CF931FA2763D7BD00AF4D25 /* ComputerCardCell.swift in Sources */,
 				9CF931DD27627BED00AF4D25 /* AppDelegate.swift in Sources */,
 				9CF931DF27627BED00AF4D25 /* SceneDelegate.swift in Sources */,

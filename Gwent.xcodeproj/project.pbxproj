@@ -17,6 +17,11 @@
 		9CF931F82763CE2500AF4D25 /* PlayerCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF931F72763CE2500AF4D25 /* PlayerCardCell.swift */; };
 		9CF931FA2763D7BD00AF4D25 /* ComputerCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF931F92763D7BD00AF4D25 /* ComputerCardCell.swift */; };
 		9CF931FD2765538800AF4D25 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF931FC2765538800AF4D25 /* ResultViewController.swift */; };
+		9CF931FF276684A900AF4D25 /* H3Main.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9CF931FE276684A800AF4D25 /* H3Main.mp3 */; };
+		9CF932012766897800AF4D25 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF932002766897800AF4D25 /* StartViewController.swift */; };
+		9CF9320327668AB400AF4D25 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF9320227668AB400AF4D25 /* AudioPlayer.swift */; };
+		9CF9320527668CEE00AF4D25 /* H3Victory.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9CF9320427668CEE00AF4D25 /* H3Victory.mp3 */; };
+		9CF93207276692A900AF4D25 /* H3Combat.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9CF93206276692A900AF4D25 /* H3Combat.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +37,11 @@
 		9CF931F72763CE2500AF4D25 /* PlayerCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCardCell.swift; sourceTree = "<group>"; };
 		9CF931F92763D7BD00AF4D25 /* ComputerCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComputerCardCell.swift; sourceTree = "<group>"; };
 		9CF931FC2765538800AF4D25 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
+		9CF931FE276684A800AF4D25 /* H3Main.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = H3Main.mp3; sourceTree = "<group>"; };
+		9CF932002766897800AF4D25 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
+		9CF9320227668AB400AF4D25 /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
+		9CF9320427668CEE00AF4D25 /* H3Victory.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = H3Victory.mp3; sourceTree = "<group>"; };
+		9CF93206276692A900AF4D25 /* H3Combat.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = H3Combat.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +78,7 @@
 				9CF931F427627C6D00AF4D25 /* ViewControllers */,
 				9CF931F327627C4700AF4D25 /* Storyboards */,
 				9CF931F227627C3900AF4D25 /* Models */,
+				9CF932082766995F00AF4D25 /* Services */,
 				9CF931F627627C9D00AF4D25 /* Resourses */,
 				9CF931F527627C8B00AF4D25 /* App */,
 			);
@@ -94,6 +105,7 @@
 		9CF931F427627C6D00AF4D25 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				9CF932002766897800AF4D25 /* StartViewController.swift */,
 				9CF931E027627BED00AF4D25 /* GameViewController.swift */,
 				9CF931FC2765538800AF4D25 /* ResultViewController.swift */,
 			);
@@ -113,6 +125,9 @@
 		9CF931F627627C9D00AF4D25 /* Resourses */ = {
 			isa = PBXGroup;
 			children = (
+				9CF931FE276684A800AF4D25 /* H3Main.mp3 */,
+				9CF93206276692A900AF4D25 /* H3Combat.mp3 */,
+				9CF9320427668CEE00AF4D25 /* H3Victory.mp3 */,
 				9CF931E527627BEF00AF4D25 /* Assets.xcassets */,
 			);
 			path = Resourses;
@@ -125,6 +140,14 @@
 				9CF931F92763D7BD00AF4D25 /* ComputerCardCell.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		9CF932082766995F00AF4D25 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				9CF9320227668AB400AF4D25 /* AudioPlayer.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -185,8 +208,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9CF931FF276684A900AF4D25 /* H3Main.mp3 in Resources */,
 				9CF931E927627BEF00AF4D25 /* LaunchScreen.storyboard in Resources */,
+				9CF93207276692A900AF4D25 /* H3Combat.mp3 in Resources */,
 				9CF931E627627BEF00AF4D25 /* Assets.xcassets in Resources */,
+				9CF9320527668CEE00AF4D25 /* H3Victory.mp3 in Resources */,
 				9CF931E427627BED00AF4D25 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -199,6 +225,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				9CF931F82763CE2500AF4D25 /* PlayerCardCell.swift in Sources */,
+				9CF932012766897800AF4D25 /* StartViewController.swift in Sources */,
+				9CF9320327668AB400AF4D25 /* AudioPlayer.swift in Sources */,
 				9CF931E127627BED00AF4D25 /* GameViewController.swift in Sources */,
 				9CF931FD2765538800AF4D25 /* ResultViewController.swift in Sources */,
 				9CF931FA2763D7BD00AF4D25 /* ComputerCardCell.swift in Sources */,

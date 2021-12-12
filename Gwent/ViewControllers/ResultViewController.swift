@@ -16,6 +16,14 @@ class ResultViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if AudioPlayer.shared.isMusicStop {
+            AudioPlayer.shared.stopMusic()
+        } else {
+            AudioPlayer.shared.stopMusic()
+            AudioPlayer.shared.playMusic(name: Music.victory.rawValue)
+        }
+        
         resultLabel.text = "\(getTheWinner()) с общим счётом побед \(winsPlayer ?? 0):\(winsComputer ?? 0)"
     }
     

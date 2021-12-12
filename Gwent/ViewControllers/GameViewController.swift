@@ -20,6 +20,7 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
     @IBOutlet var computerChosenCardsLabel: UILabel!
     
     @IBOutlet var playerPassButton: UIButton!
+    @IBOutlet var musicButton: UIButton!
     
     // MARK: - Private Properties
     private var numberOfRound = 1
@@ -70,8 +71,23 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
         }
     }
     
+    @IBAction func turnMusic() {
+        AudioPlayer.shared.isMusicStop.toggle()
+        if AudioPlayer.shared.isMusicStop {
+            musicButton.setTitle("🔕", for: .normal)
+            AudioPlayer.shared.audioPlayer?.pause()
+        } else {
+            musicButton.setTitle("🎶", for: .normal)
+            AudioPlayer.shared.audioPlayer?.play()
+        }
+        
+    }
+    
     @IBAction func unwind(for unwindSegue: UIStoryboardSegue) {
         startNewGame()
+        if !AudioPlayer.shared.isMusicStop {
+            AudioPlayer.shared.playMusic(name: Music.combat.rawValue)
+        }
     }
     
     // MARK: - Public methods of DataSource and Delegate

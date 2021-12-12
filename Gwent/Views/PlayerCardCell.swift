@@ -19,7 +19,6 @@ class PlayerCardCell: UICollectionViewCell {
         playerCardAttackLabel.backgroundColor = .systemGray6
         playerCardAttackLabel.layer.borderColor = CGColor(red: 0, green: 0, blue: 255, alpha: 0.7)
         playerCardAttackLabel.layer.borderWidth = 1
-        
         playerCardPictureLabel.text = "🥷"
         playerCardAttackLabel.text = "\(card.typeWarrior.attack)"
     }

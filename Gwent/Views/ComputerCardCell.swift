@@ -16,7 +16,6 @@ class ComputerCardCell: UICollectionViewCell {
     func configureCell(cell: UICollectionViewCell, card: Card) {
         cell.layer.cornerRadius = 3
         cell.backgroundColor = .systemRed.withAlphaComponent(0.3)
-        
         computerCardPictureLabel.text = "🧟‍♂️"
         computerCardAttackLabel.text = ""
     }

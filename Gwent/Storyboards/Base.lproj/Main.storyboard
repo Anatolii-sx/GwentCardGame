@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hn2-RN-jdq">
-                                <rect key="frame" x="60" y="263.5" width="200" height="41"/>
+                                <rect key="frame" x="60" y="492.5" width="200" height="41"/>
                                 <color key="backgroundColor" red="0.28235294119999998" green="0.58823529409999997" blue="0.70980392160000005" alpha="0.61610099340000002" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="aVf-H6-mIm"/>
@@ -28,7 +28,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="Start Game"/>
+                                <state key="normal" title="Начать игру"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                         <integer key="value" value="7"/>
@@ -38,10 +38,19 @@
                                     <segue destination="BYZ-38-t0r" kind="show" id="zsg-Ma-eM1"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZRI-vV-8GQ">
-                                <rect key="frame" x="139" y="150" width="0.0" height="0.0"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Карточная игра &quot;Гвинт&quot;" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="poU-af-bSI">
+                                <rect key="frame" x="33.5" y="32" width="253" height="38.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="169" id="P4g-Id-rde"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z8g-jI-7cd">
+                                <rect key="frame" x="16" y="102.5" width="288" height="320"/>
+                                <mutableString key="text">Правила игры: каждый игрок получает по пять карт в первом раунде. Всего 3 раунда. Во втором и третьем раунде игроки получают ещё по три карты. Игроки по очереди вскрывают карты, чтобы набрать наибольшее количество очков в каждом раунде. Выигрывает тот, кто выиграл наибольшее количество раундов.</mutableString>
+                                <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -49,14 +58,19 @@
                         <viewLayoutGuide key="safeArea" id="kZA-A4-fUd"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Hn2-RN-jdq" firstAttribute="centerX" secondItem="BED-k2-Wne" secondAttribute="centerX" id="MUS-XP-6op"/>
-                            <constraint firstItem="Hn2-RN-jdq" firstAttribute="centerY" secondItem="BED-k2-Wne" secondAttribute="centerY" id="Saa-ua-AnD"/>
+                            <constraint firstItem="Hn2-RN-jdq" firstAttribute="centerX" secondItem="BED-k2-Wne" secondAttribute="centerX" id="1bb-4J-kzR"/>
+                            <constraint firstItem="kZA-A4-fUd" firstAttribute="trailing" secondItem="Z8g-jI-7cd" secondAttribute="trailing" constant="16" id="K4X-Qe-ZHQ"/>
+                            <constraint firstItem="Hn2-RN-jdq" firstAttribute="top" secondItem="Z8g-jI-7cd" secondAttribute="bottom" constant="70" id="exY-nu-pHb"/>
+                            <constraint firstItem="poU-af-bSI" firstAttribute="top" secondItem="kZA-A4-fUd" secondAttribute="top" constant="32" id="pjg-gI-TIQ"/>
+                            <constraint firstItem="poU-af-bSI" firstAttribute="centerX" secondItem="BED-k2-Wne" secondAttribute="centerX" id="qGG-q4-cNG"/>
+                            <constraint firstItem="Z8g-jI-7cd" firstAttribute="top" secondItem="poU-af-bSI" secondAttribute="bottom" constant="32" id="t6I-8c-02R"/>
+                            <constraint firstItem="Z8g-jI-7cd" firstAttribute="leading" secondItem="kZA-A4-fUd" secondAttribute="leading" constant="16" id="vaW-yq-E64"/>
                         </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pVW-al-tFU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-737" y="81"/>
+            <point key="canvasLocation" x="-738.75" y="80.281690140845072"/>
         </scene>
         <!--Game View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -150,12 +164,12 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="Pass"/>
+                                <state key="normal" title="Пасс"/>
                                 <connections>
                                     <action selector="playerPassButtonTapped" destination="BYZ-38-t0r" eventType="touchUpInside" id="zFX-zT-jJg"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Round: 1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I5J-nS-gQi">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Раунд 1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I5J-nS-gQi">
                                 <rect key="frame" x="16" y="20" width="288" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="NHO-7g-Ngd"/>
@@ -170,7 +184,7 @@
                                     <constraint firstAttribute="height" constant="4" id="g3v-nx-Y57"/>
                                 </constraints>
                             </progressView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pass" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pKE-7p-TVn">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Пасс" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pKE-7p-TVn">
                                 <rect key="frame" x="60" y="60" width="200" height="41"/>
                                 <color key="backgroundColor" red="0.28235294117647058" green="0.58823529411764708" blue="0.70980392156862748" alpha="0.61610099337748347" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -287,22 +301,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="130" translatesAutoresizingMaskIntoConstraints="NO" id="g1B-Ih-jaY">
-                                <rect key="frame" x="60" y="85" width="200" height="238"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="200" translatesAutoresizingMaskIntoConstraints="NO" id="g1B-Ih-jaY">
+                                <rect key="frame" x="60" y="142.5" width="200" height="283"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You won! 😎 Score: 2/0" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c8G-Da-D6G">
-                                        <rect key="frame" x="0.0" y="0.0" width="200" height="67"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Победа" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c8G-Da-D6G">
+                                        <rect key="frame" x="0.0" y="0.0" width="200" height="42"/>
+                                        <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="26"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SUs-hD-Al9">
-                                        <rect key="frame" x="0.0" y="197" width="200" height="41"/>
+                                        <rect key="frame" x="0.0" y="242" width="200" height="41"/>
                                         <color key="backgroundColor" red="0.28235294119999998" green="0.58823529409999997" blue="0.70980392160000005" alpha="0.61610099340000002" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" title="Play again"/>
+                                        <state key="normal" title="Играть снова"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                 <integer key="value" value="7"/>
@@ -322,7 +336,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="g1B-Ih-jaY" firstAttribute="centerX" secondItem="Vi7-5x-tVv" secondAttribute="centerX" id="DGO-xc-61H"/>
-                            <constraint firstItem="g1B-Ih-jaY" firstAttribute="centerY" secondItem="Vi7-5x-tVv" secondAttribute="centerY" constant="-80" id="gVl-8f-DR9"/>
+                            <constraint firstItem="g1B-Ih-jaY" firstAttribute="centerY" secondItem="Vi7-5x-tVv" secondAttribute="centerY" id="gVl-8f-DR9"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Viw-kQ-qcK"/>

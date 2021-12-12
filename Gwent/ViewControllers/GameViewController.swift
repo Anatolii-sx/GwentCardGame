@@ -9,17 +9,17 @@ import UIKit
 
 class GameViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     // MARK: - IB Outlets
-    @IBOutlet weak var progressView: UIProgressView!
+    @IBOutlet var progressView: UIProgressView!
    
-    @IBOutlet weak var playerCollectionView: UICollectionView!
-    @IBOutlet weak var computerCollectionView: UICollectionView!
+    @IBOutlet var playerCollectionView: UICollectionView!
+    @IBOutlet var computerCollectionView: UICollectionView!
     
-    @IBOutlet weak var roundLabel: UILabel!
-    @IBOutlet weak var computerPassLabel: UILabel!
-    @IBOutlet weak var playerChosenCardsLabel: UILabel!
-    @IBOutlet weak var computerChosenCardsLabel: UILabel!
+    @IBOutlet var roundLabel: UILabel!
+    @IBOutlet var computerPassLabel: UILabel!
+    @IBOutlet var playerChosenCardsLabel: UILabel!
+    @IBOutlet var computerChosenCardsLabel: UILabel!
     
-    @IBOutlet weak var playerPassButton: UIButton!
+    @IBOutlet var playerPassButton: UIButton!
     
     // MARK: - Private Properties
     private var numberOfRound = 1
@@ -46,20 +46,9 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
         super.viewDidLoad()
         addCardsToDeck()
         getCardsFromDeck()
-        
-        playerChosenCardsLabel.text = "Tap a card for fight"
-        computerChosenCardsLabel.text = ""
-        roundLabel.text = "Round \(numberOfRound)"
-        
-        playerCollectionView.dataSource = self
-        playerCollectionView.delegate = self
-        
-        computerCollectionView.dataSource = self
-        computerCollectionView.delegate = self
-        
-        playerPassButton.layer.cornerRadius = 7
-        computerPassLabel.layer.cornerRadius = 7
-        computerPassLabel.clipsToBounds = true
+        setStartLabelsText()
+        setDataSourceAndDelegate()
+        setCornerRadiusOfPass()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -85,7 +74,7 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
         startNewGame()
     }
     
-    // MARK: - Public Methods
+    // MARK: - Public methods of DataSource and Delegate
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         collectionView == playerCollectionView ? currentCardsPlayer.count : currentCardsComputer.count
     }
@@ -123,6 +112,26 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
         }
     }
     
+    // MARK: - Started private methods
+    private func setDataSourceAndDelegate() {
+        playerCollectionView.dataSource = self
+        playerCollectionView.delegate = self
+        computerCollectionView.dataSource = self
+        computerCollectionView.delegate = self
+    }
+    
+    private func setStartLabelsText() {
+        playerChosenCardsLabel.text = "Выберите карту для боя"
+        computerChosenCardsLabel.text = ""
+        roundLabel.text = "Раунд \(numberOfRound)"
+    }
+    
+    private func setCornerRadiusOfPass(){
+        playerPassButton.layer.cornerRadius = 7
+        computerPassLabel.layer.cornerRadius = 7
+        computerPassLabel.clipsToBounds = true
+    }
+    
     // MARK: - Private methods of interaction with a deck
     private func addCardsToDeck() {
         deckCardsPlayer = Card.getCardsForGame()
@@ -158,6 +167,7 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
         }
     }
     
+    // MARK: - Private methods of starting new game
     private func startNewGame() {
         clearDecks()
         clearCurrentCards()
@@ -183,31 +193,14 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
         winsPlayer = 0
         winsComputer = 0
     }
-
-    // MARK: - Other Private Methods
-    private func addPlayerCardsToLabel() {
-        let cards = playerChosenCardsForFight.map { String($0.typeWarrior.attack) + "🥷" }
-        playerChosenCardsLabel.text = cards.joined(separator: "  ")
-    }
     
-    private func updateProgressView () {
-        let progressValue = Float(numberOfRound) / 3
-        progressView.setProgress(progressValue, animated: true)
-    }
-    
-    private func checkButtonsStatus() {
-        if isPlayerPassButtonTapped && isComputerPassButtonTapped {
-            getResult()
-            startNewRound()
-        }
-    }
-    
+    // MARK: - Private methods of starting new round
     private func startNewRound() {
         
         if numberOfRound < 3 {
             updateProgressView()
             numberOfRound += 1
-            roundLabel.text = "Round \(numberOfRound)"
+            roundLabel.text = "Раунд \(numberOfRound)"
             clearChosenCards()
             getCardsFromDeck()
             reloadCollectionViews()
@@ -244,6 +237,14 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
         computerPassLabel.textColor = .black
     }
     
+// MARK: - Private methods of getting result and finishing game in current round
+    private func checkButtonsStatus() {
+        if isPlayerPassButtonTapped && isComputerPassButtonTapped {
+            getResult()
+            startNewRound()
+        }
+    }
+    
     private func getResult() {
         var winner = ""
         
@@ -256,17 +257,17 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
             
             if scoreRoundPlayer > scoreRoundComputer {
                 winsPlayer += 1
-                winner = "Player 🦹🏼‍♂️"
+                winner = "Победил игрок 🦹🏼‍♂️"
             } else if scoreRoundPlayer < scoreRoundComputer {
                 winsComputer += 1
-                winner = "Computer 👾"
+                winner = "Победил компьютер 👾"
             } else {
-                winner = "No one 🤝"
+                winner = "Ничья 🤝"
             }
         }
         
         if numberOfRound < 3 {
-            showAlert(title: "Round \(numberOfRound) is finished", message: "The winner is: \(winner) with score \(scoreRoundPlayer):\(scoreRoundComputer)")
+            showAlert(title: "Раунд \(numberOfRound) завершён", message: "\(winner) со счётом \(scoreRoundPlayer):\(scoreRoundComputer)")
         }
     }
     
@@ -286,7 +287,20 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
             changeColorOfComputerPassButton()
         }
     }
+
+    // MARK: - Private method of adding chosen player cards into label
+    private func addPlayerCardsToLabel() {
+        let cards = playerChosenCardsForFight.map { String($0.typeWarrior.attack) + "🥷" }
+        playerChosenCardsLabel.text = cards.joined(separator: "  ")
+    }
     
+    // MARK: - Private method of update progress view
+    private func updateProgressView () {
+        let progressValue = Float(numberOfRound) / 3
+        progressView.setProgress(progressValue, animated: true)
+    }
+    
+    // MARK: - Private method of delay
     private func delay(_ delay: Int, completion: @escaping () -> ()) {
         DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(delay)) {
             completion()
@@ -294,8 +308,21 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
 }
 
+// MARK: - Alert Controller
+extension GameViewController {
+   private func showAlert(title: String, message: String) {
+       let alert = UIAlertController(
+           title: title,
+           message: message,
+           preferredStyle: .alert
+       )
+       present(alert, animated: true)
+       let okButton = UIAlertAction(title: "OK", style: .default)
+       alert.addAction(okButton)
+   }
+}
 
- // MARK: - Computer Logic of making decision
+// MARK: - Computer Logic of making decision
 extension GameViewController {
     private func makeComputerDecisionAfterPlayerPassButtonTapped() {
         if playerChosenCardsForFight.isEmpty {
@@ -372,17 +399,5 @@ extension GameViewController {
     }
 }
 
- // MARK: - Alert Controller
-extension GameViewController {
-    private func showAlert(title: String, message: String) {
-        let alert = UIAlertController(
-            title: title,
-            message: message,
-            preferredStyle: .alert
-        )
-        present(alert, animated: true)
-        let okButton = UIAlertAction(title: "OK", style: .default)
-        alert.addAction(okButton)
-    }
-}
+
 

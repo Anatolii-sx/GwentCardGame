@@ -328,27 +328,37 @@ extension GameViewController {
         if playerChosenCardsForFight.isEmpty {
             makeComputerDecision()
             isComputerPassButtonTapped = true
+        } else if numberOfRound == 1 {
+            setComputerSteps(abovePlayer: 0)
+        } else if numberOfRound == 2 {
+            setComputerSteps(abovePlayer: 2)
         } else if numberOfRound == 3 {
-            while
-                !isComputerPassButtonTapped
-                && !currentCardsComputer.isEmpty {
-                makeComputerDecision()
-            }
-            if isPlayerPassButtonTapped {
-                isComputerPassButtonTapped = true
-                changeColorOfComputerPassButton()
-            }
-        } else {
-            while
-                !isComputerPassButtonTapped
-                && !currentCardsComputer.isEmpty
-                && computerChosenCardsForFight.count <= playerChosenCardsForFight.count + 2 {
-                makeComputerDecision()
-            }
-            if isPlayerPassButtonTapped {
-                isComputerPassButtonTapped = true
-                changeColorOfComputerPassButton()
-            }
+            setComputerStepsInLastRound()
+        }
+    }
+    
+    private func setComputerSteps(abovePlayer: Int) {
+        while
+            !isComputerPassButtonTapped
+            && !currentCardsComputer.isEmpty
+            && computerChosenCardsForFight.count <= playerChosenCardsForFight.count + abovePlayer {
+            makeComputerDecision()
+        }
+        if isPlayerPassButtonTapped {
+            isComputerPassButtonTapped = true
+            changeColorOfComputerPassButton()
+        }
+    }
+    
+    private func setComputerStepsInLastRound() {
+        while
+            !isComputerPassButtonTapped
+            && !currentCardsComputer.isEmpty {
+            makeComputerDecision()
+        }
+        if isPlayerPassButtonTapped {
+            isComputerPassButtonTapped = true
+            changeColorOfComputerPassButton()
         }
     }
     

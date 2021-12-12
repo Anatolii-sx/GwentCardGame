@@ -15,9 +15,9 @@ class PlayerCardCell: UICollectionViewCell {
     // MARK: - Public Method
     func configureCell(cell: UICollectionViewCell, card: Card) {
         cell.layer.cornerRadius = 3
-        cell.backgroundColor = .systemGray3
-        playerCardAttackLabel.backgroundColor = .white
-        playerCardAttackLabel.layer.borderColor = CGColor(red: 255, green: 0, blue: 0, alpha: 1)
+        cell.backgroundColor = .systemBlue.withAlphaComponent(0.3)
+        playerCardAttackLabel.backgroundColor = .systemGray6
+        playerCardAttackLabel.layer.borderColor = CGColor(red: 0, green: 0, blue: 255, alpha: 0.7)
         playerCardAttackLabel.layer.borderWidth = 1
         
         playerCardPictureLabel.text = "🥷"

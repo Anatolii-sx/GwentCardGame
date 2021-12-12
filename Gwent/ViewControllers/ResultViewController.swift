@@ -16,7 +16,7 @@ class ResultViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        resultLabel.text = "\(getTheWinner()) won with score \(winsPlayer ?? 0):\(winsComputer ?? 0)"
+        resultLabel.text = "\(getTheWinner()) won with score by rounds \(winsPlayer ?? 0):\(winsComputer ?? 0)"
     }
     
     private func getTheWinner() -> String {

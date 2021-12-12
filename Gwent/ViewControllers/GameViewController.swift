@@ -38,7 +38,9 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
     private var winsPlayer = 0
     private var winsComputer = 0
     
-
+    private var scoreRoundPlayer = 0
+    private var scoreRoundComputer = 0
+    
     // MARK: - Override Methods
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,15 +68,6 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
         resultVC.winsComputer = winsComputer
     }
     
-    @IBAction func unwind(for unwindSegue: UIStoryboardSegue) {
-        startNewGame()
-    }
-    
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//
-//    }
-    
     // MARK: - IB Actions
     @IBAction func playerPassButtonTapped() {
         isPlayerPassButtonTapped = true
@@ -83,7 +76,13 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
         playerPassButton.isEnabled = false
         
         makeComputerDecisionAfterPlayerPassButtonTapped()
-        checkButtonsStatus()
+        delay(200) { [self] in
+            self.checkButtonsStatus()
+        }
+    }
+    
+    @IBAction func unwind(for unwindSegue: UIStoryboardSegue) {
+        startNewGame()
     }
     
     // MARK: - Public Methods
@@ -116,13 +115,13 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
             playerCollectionView.deleteItems(at: [indexPath])
             addPlayerCardsToLabel()
             makeComputerDecision()
-            checkCurrentCardsEmpty()
+            delay(200) { [self] in
+                self.checkCurrentCardsEmpty()
+            }
         } else if collectionView == computerCollectionView {
             print("Don't try to play instead computer 🙂")
         }
     }
-    
-   
     
     // MARK: - Private methods of interaction with a deck
     private func addCardsToDeck() {
@@ -165,7 +164,9 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
         clearWins()
         addCardsToDeck()
         numberOfRound = 0
-        startNewRound()
+        delay(200) { [self] in
+            self.startNewRound()
+        }
     }
     
     private func clearDecks() {
@@ -183,10 +184,6 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
         winsComputer = 0
     }
 
-    
-    
-    
-    
     // MARK: - Other Private Methods
     private func addPlayerCardsToLabel() {
         let cards = playerChosenCardsForFight.map { String($0.typeWarrior.attack) + "🥷" }
@@ -216,10 +213,11 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
             reloadCollectionViews()
             clearTappedFromButtons()
         } else {
-            clearTappedFromButtons()
-            performSegue(withIdentifier: "resultSegue", sender: nil)
+            delay(150) { [self] in
+                self.clearTappedFromButtons()
+                self.performSegue(withIdentifier: "resultSegue", sender: nil)
+            }
         }
-        
     }
     
     private func clearChosenCards() {
@@ -249,27 +247,27 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
     private func getResult() {
         var winner = ""
         
-        if numberOfRound < 3 {
+        if numberOfRound <= 3 {
             let playerListOfAttack = playerChosenCardsForFight.map { $0.typeWarrior.attack }
-            let scorePlayer = playerListOfAttack.reduce(0, +)
+            scoreRoundPlayer = playerListOfAttack.reduce(0, +)
             
             let computerListOfAttack = computerChosenCardsForFight.map { $0.typeWarrior.attack }
-            let scoreComputer = computerListOfAttack.reduce(0, +)
+            scoreRoundComputer = computerListOfAttack.reduce(0, +)
             
-            if scorePlayer > scoreComputer {
+            if scoreRoundPlayer > scoreRoundComputer {
                 winsPlayer += 1
                 winner = "Player 🦹🏼‍♂️"
-                
-            } else if scorePlayer < scoreComputer {
+            } else if scoreRoundPlayer < scoreRoundComputer {
                 winsComputer += 1
                 winner = "Computer 👾"
             } else {
                 winner = "No one 🤝"
             }
-            
-            showAlert(title: "Round \(numberOfRound) is finished", message: "The winner is: \(winner)")
         }
         
+        if numberOfRound < 3 {
+            showAlert(title: "Round \(numberOfRound) is finished", message: "The winner is: \(winner) with score \(scoreRoundPlayer):\(scoreRoundComputer)")
+        }
     }
     
     private func checkCurrentCardsEmpty() {
@@ -288,6 +286,12 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
             changeColorOfComputerPassButton()
         }
     }
+    
+    private func delay(_ delay: Int, completion: @escaping () -> ()) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(delay)) {
+            completion()
+        }
+    }
 }
 
 
@@ -297,12 +301,26 @@ extension GameViewController {
         if playerChosenCardsForFight.isEmpty {
             makeComputerDecision()
             isComputerPassButtonTapped = true
+        } else if numberOfRound == 3 {
+            while
+                !isComputerPassButtonTapped
+                && !currentCardsComputer.isEmpty {
+                makeComputerDecision()
+            }
+            if isPlayerPassButtonTapped {
+                isComputerPassButtonTapped = true
+                changeColorOfComputerPassButton()
+            }
         } else {
             while
                 !isComputerPassButtonTapped
                 && !currentCardsComputer.isEmpty
-                && computerChosenCardsForFight.count <= playerChosenCardsForFight.count {
+                && computerChosenCardsForFight.count <= playerChosenCardsForFight.count + 2 {
                 makeComputerDecision()
+            }
+            if isPlayerPassButtonTapped {
+                isComputerPassButtonTapped = true
+                changeColorOfComputerPassButton()
             }
         }
     }
@@ -316,11 +334,6 @@ extension GameViewController {
             currentCardsComputer.remove(at: indexCard)
             let numberOfCard = IndexPath(item: indexCard, section: 0)
             computerCollectionView.deleteItems(at: [numberOfCard])
-            
-            if isPlayerPassButtonTapped {
-                isComputerPassButtonTapped = true
-                changeColorOfComputerPassButton()
-            }
         }
     }
     
@@ -342,9 +355,11 @@ extension GameViewController {
     private func getRandomComputerDecisionOfMoving() {
         if playerChosenCardsForFight.count <= 1 {
             isComputerPassButtonTapped = false
+        } else if numberOfRound == 3 {
+            isComputerPassButtonTapped = false
         } else if !isComputerPassButtonTapped {
             let randomChoice = Int.random(in: 0...10)
-            isComputerPassButtonTapped = randomChoice > 8 ? true: false
+            isComputerPassButtonTapped = randomChoice > 9 ? true: false
             changeColorOfComputerPassButton()
         }
     }
@@ -355,8 +370,6 @@ extension GameViewController {
             computerPassLabel.textColor = .white
         }
     }
-    
-    
 }
 
  // MARK: - Alert Controller
@@ -367,11 +380,8 @@ extension GameViewController {
             message: message,
             preferredStyle: .alert
         )
-        
         present(alert, animated: true)
-
         let okButton = UIAlertAction(title: "OK", style: .default)
-        
         alert.addAction(okButton)
     }
 }

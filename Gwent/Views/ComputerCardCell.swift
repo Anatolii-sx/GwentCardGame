@@ -15,12 +15,9 @@ class ComputerCardCell: UICollectionViewCell {
     // MARK: - Public Method
     func configureCell(cell: UICollectionViewCell, card: Card) {
         cell.layer.cornerRadius = 3
-        cell.backgroundColor = .systemGray3
-        computerCardAttackLabel.backgroundColor = .white
-        computerCardAttackLabel.layer.borderColor = CGColor(red: 255, green: 0, blue: 0, alpha: 1)
-        computerCardAttackLabel.layer.borderWidth = 1
+        cell.backgroundColor = .systemRed.withAlphaComponent(0.3)
         
         computerCardPictureLabel.text = "🧟‍♂️"
-        computerCardAttackLabel.text = "\(card.typeWarrior.attack)"
+        computerCardAttackLabel.text = ""
     }
 }
